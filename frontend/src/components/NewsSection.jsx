@@ -1,10 +1,8 @@
-import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Calendar, ArrowRight, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+import { NEWS_DATA } from "@/data/staticData";
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
@@ -106,42 +104,8 @@ export const InstagramFeed = () => {
 };
 
 export const NewsSection = ({ limit = 4, showInstagram = true }) => {
-  const [news, setNews] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        const response = await fetch(`${API}/news?limit=${limit}`);
-        const data = await response.json();
-        setNews(data);
-      } catch (error) {
-        console.error("Error fetching news:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchNews();
-  }, [limit]);
-
-  if (loading) {
-    return (
-      <section className="py-24 bg-midnight-pitch">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="animate-pulse space-y-4">
-            <div className="h-8 bg-slate-800 rounded w-48" />
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-              <div className="lg:col-span-2 h-96 bg-slate-800 rounded" />
-              <div className="space-y-4">
-                <div className="h-24 bg-slate-800 rounded" />
-                <div className="h-24 bg-slate-800 rounded" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
+  // Statische Daten verwenden
+  const news = NEWS_DATA.slice(0, limit);
 
   const featuredNews = news.find(n => n.is_featured) || news[0];
   const otherNews = news.filter(n => n.id !== featuredNews?.id).slice(0, 3);

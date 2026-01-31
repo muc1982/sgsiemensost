@@ -9,18 +9,18 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-// ✅ Dein Logo liegt laut Screenshot hier:
-import CLUB_LOGO from "../assets/logo.png";
+// Logo aus public/assets Ordner
+const CLUB_LOGO = "/assets/logo.png";
 
 const navLinks = [
   { name: "Verein", path: "/verein" },
-  {
-    name: "Mannschaften",
+  { 
+    name: "Mannschaften", 
     children: [
       { name: "1. Mannschaft", path: "/erste-mannschaft" },
       { name: "2. Mannschaft", path: "/zweite-mannschaft" },
       { name: "Traditionsmannschaft", path: "/traditionsmannschaft" },
-    ],
+    ]
   },
   { name: "News", path: "/news" },
   { name: "Ansprechpartner", path: "/ansprechpartner" },
@@ -39,9 +39,9 @@ export const Header = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3" data-testid="logo-link">
-            <img
-              src={CLUB_LOGO}
-              alt="SG Siemens München Ost"
+            <img 
+              src={CLUB_LOGO} 
+              alt="SG Siemens München Ost" 
               className="h-14 w-14 object-contain"
             />
             <span className="hidden md:block font-heading text-lg text-white tracking-wide">
@@ -51,7 +51,7 @@ export const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-8" data-testid="desktop-nav">
-            {navLinks.map((link) =>
+            {navLinks.map((link) => (
               link.children ? (
                 <DropdownMenu key={link.name}>
                   <DropdownMenuTrigger asChild>
@@ -63,12 +63,10 @@ export const Header = () => {
                   <DropdownMenuContent className="bg-slate-900 border-slate-700">
                     {link.children.map((child) => (
                       <DropdownMenuItem key={child.path} asChild>
-                        <Link
+                        <Link 
                           to={child.path}
                           className={`font-heading text-sm uppercase tracking-wider ${
-                            isActive(child.path)
-                              ? "text-cyber-gold"
-                              : "text-slate-300 hover:text-white"
+                            isActive(child.path) ? 'text-cyber-gold' : 'text-slate-300 hover:text-white'
                           }`}
                         >
                           {child.name}
@@ -82,22 +80,20 @@ export const Header = () => {
                   key={link.path}
                   to={link.path}
                   className={`nav-link font-heading text-sm uppercase tracking-wider ${
-                    isActive(link.path)
-                      ? "text-cyber-gold"
-                      : "text-slate-300 hover:text-white"
+                    isActive(link.path) ? 'text-cyber-gold' : 'text-slate-300 hover:text-white'
                   }`}
                   data-testid={`nav-${link.name.toLowerCase()}`}
                 >
                   {link.name}
                 </Link>
               )
-            )}
+            ))}
           </nav>
 
           {/* CTA Button */}
           <div className="hidden lg:block">
             <Link to="/mitgliedschaft">
-              <Button
+              <Button 
                 className="bg-cyber-gold text-midnight-pitch font-heading uppercase tracking-wider hover:bg-yellow-300 rounded-full px-6"
                 data-testid="cta-mitglied"
               >
@@ -109,7 +105,7 @@ export const Header = () => {
           {/* Mobile Menu Button */}
           <button
             className="lg:hidden text-white p-2"
-            onClick={() => setMobileMenuOpen((v) => !v)}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             data-testid="mobile-menu-toggle"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -121,7 +117,7 @@ export const Header = () => {
       {mobileMenuOpen && (
         <div className="lg:hidden bg-slate-900 border-t border-slate-700" data-testid="mobile-menu">
           <nav className="px-6 py-4 space-y-4">
-            {navLinks.map((link) =>
+            {navLinks.map((link) => (
               link.children ? (
                 <div key={link.name} className="space-y-2">
                   <span className="font-heading text-sm uppercase tracking-wider text-slate-400">
@@ -133,7 +129,7 @@ export const Header = () => {
                         key={child.path}
                         to={child.path}
                         className={`block font-heading text-sm uppercase tracking-wider ${
-                          isActive(child.path) ? "text-cyber-gold" : "text-slate-300"
+                          isActive(child.path) ? 'text-cyber-gold' : 'text-slate-300'
                         }`}
                         onClick={() => setMobileMenuOpen(false)}
                       >
@@ -147,16 +143,18 @@ export const Header = () => {
                   key={link.path}
                   to={link.path}
                   className={`block font-heading text-sm uppercase tracking-wider ${
-                    isActive(link.path) ? "text-cyber-gold" : "text-slate-300"
+                    isActive(link.path) ? 'text-cyber-gold' : 'text-slate-300'
                   }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.name}
                 </Link>
               )
-            )}
-
-            <Link to="/mitgliedschaft" onClick={() => setMobileMenuOpen(false)}>
+            ))}
+            <Link 
+              to="/mitgliedschaft"
+              onClick={() => setMobileMenuOpen(false)}
+            >
               <Button className="w-full bg-cyber-gold text-midnight-pitch font-heading uppercase tracking-wider hover:bg-yellow-300 rounded-full mt-4">
                 Mitglied werden
               </Button>
@@ -176,71 +174,43 @@ export const Footer = () => {
           {/* Club Info */}
           <div className="col-span-2 md:col-span-1">
             <div className="flex items-center gap-3 mb-4 sm:mb-6">
-              <img
-                src={CLUB_LOGO}
-                alt="SG Siemens München Ost"
+              <img 
+                src={CLUB_LOGO} 
+                alt="SG Siemens München Ost" 
                 className="h-12 w-12 sm:h-16 sm:w-16 object-contain"
               />
             </div>
             <p className="text-slate-400 text-sm leading-relaxed">
-              SG Siemens München Ost e.V.
-              <br />
+              SG Siemens München Ost e.V.<br />
               Tradition seit 1954
             </p>
           </div>
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-heading text-base sm:text-lg text-white mb-3 sm:mb-4">
-              Quick Links
-            </h4>
+            <h4 className="font-heading text-base sm:text-lg text-white mb-3 sm:mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              <li>
-                <Link to="/verein" className="text-slate-400 hover:text-cyber-gold text-sm">
-                  Verein
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/erste-mannschaft"
-                  className="text-slate-400 hover:text-cyber-gold text-sm"
-                >
-                  1. Mannschaft
-                </Link>
-              </li>
-              <li>
-                <Link to="/news" className="text-slate-400 hover:text-cyber-gold text-sm">
-                  News
-                </Link>
-              </li>
-              <li>
-                <Link to="/kontakt" className="text-slate-400 hover:text-cyber-gold text-sm">
-                  Kontakt
-                </Link>
-              </li>
+              <li><Link to="/verein" className="text-slate-400 hover:text-cyber-gold text-sm">Verein</Link></li>
+              <li><Link to="/erste-mannschaft" className="text-slate-400 hover:text-cyber-gold text-sm">1. Mannschaft</Link></li>
+              <li><Link to="/news" className="text-slate-400 hover:text-cyber-gold text-sm">News</Link></li>
+              <li><Link to="/kontakt" className="text-slate-400 hover:text-cyber-gold text-sm">Kontakt</Link></li>
             </ul>
           </div>
 
           {/* Address */}
           <div>
-            <h4 className="font-heading text-base sm:text-lg text-white mb-3 sm:mb-4">
-              Adresse
-            </h4>
+            <h4 className="font-heading text-base sm:text-lg text-white mb-3 sm:mb-4">Adresse</h4>
             <address className="text-slate-400 text-sm not-italic leading-relaxed">
-              St.-Cajetan-Straße 33
-              <br />
-              81669 München
-              <br />
+              St.-Cajetan-Straße 33<br />
+              81669 München<br />
               Deutschland
             </address>
           </div>
 
           {/* Social */}
           <div>
-            <h4 className="font-heading text-base sm:text-lg text-white mb-3 sm:mb-4">
-              Folge Uns
-            </h4>
-            <a
+            <h4 className="font-heading text-base sm:text-lg text-white mb-3 sm:mb-4">Folge Uns</h4>
+            <a 
               href="https://www.instagram.com/sg_siemens_ost_infineon"
               target="_blank"
               rel="noopener noreferrer"
@@ -259,12 +229,8 @@ export const Footer = () => {
             © {new Date().getFullYear()} SG Siemens München Ost e.V. Alle Rechte vorbehalten.
           </p>
           <div className="flex gap-4 sm:gap-6">
-            <Link to="/impressum" className="text-slate-500 hover:text-white text-xs sm:text-sm">
-              Impressum
-            </Link>
-            <Link to="/datenschutz" className="text-slate-500 hover:text-white text-xs sm:text-sm">
-              Datenschutz
-            </Link>
+            <Link to="/impressum" className="text-slate-500 hover:text-white text-xs sm:text-sm">Impressum</Link>
+            <Link to="/datenschutz" className="text-slate-500 hover:text-white text-xs sm:text-sm">Datenschutz</Link>
           </div>
         </div>
       </div>
@@ -272,7 +238,7 @@ export const Footer = () => {
   );
 };
 
-export default function Layout() {
+const Layout = () => {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
@@ -282,4 +248,6 @@ export default function Layout() {
       <Footer />
     </div>
   );
-}
+};
+
+export default Layout;

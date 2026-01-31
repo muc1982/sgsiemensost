@@ -1,27 +1,9 @@
-import { useState, useEffect } from "react";
 import { NewsCard, InstagramFeed } from "@/components/NewsSection";
-import { Skeleton } from "@/components/ui/skeleton";
-
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+import { NEWS_DATA } from "@/data/staticData";
 
 export default function NewsPage() {
-  const [news, setNews] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchNews = async () => {
-      try {
-        const response = await fetch(`${API}/news?limit=20`);
-        const data = await response.json();
-        setNews(data);
-      } catch (error) {
-        console.error("Error fetching news:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchNews();
-  }, []);
+  // Statische Daten verwenden
+  const news = NEWS_DATA;
 
   return (
     <div className="min-h-screen bg-midnight-pitch" data-testid="news-page">
@@ -46,11 +28,7 @@ export default function NewsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* News List */}
             <div className="lg:col-span-2 space-y-6">
-              {loading ? (
-                [...Array(5)].map((_, i) => (
-                  <Skeleton key={i} className="h-40 rounded-lg" />
-                ))
-              ) : news.length > 0 ? (
+              {news.length > 0 ? (
                 news.map((item, index) => (
                   <NewsCard key={item.id} news={item} featured={index === 0} />
                 ))

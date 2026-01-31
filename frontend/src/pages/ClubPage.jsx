@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Calendar, Trophy, Users, Target } from "lucide-react";
 
-const CLUB_LOGO = "https://customer-assets.emergentagent.com/job_7c590580-50fa-4ebf-a519-299d708e8357/artifacts/2832tj7i_Herunterladen.png";
+const CLUB_LOGO = "/assets/logo.png";
 
 const timeline = [
   { year: "1954", event: "Gründung des Vereins" },
