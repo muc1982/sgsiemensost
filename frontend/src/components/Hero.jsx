@@ -34,46 +34,46 @@ export const Hero = () => {
           </div>
 
           {/* Logo */}
-          <div className="mb-8 animate-fade-in stagger-1 opacity-0">
+          <div className="mb-6 sm:mb-8 animate-fade-in stagger-1 opacity-0">
             <img 
               src={CLUB_LOGO} 
               alt="SG Siemens München Ost" 
-              className="h-32 w-32 object-contain"
+              className="h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 object-contain"
             />
           </div>
 
           {/* Main Heading */}
-          <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 animate-fade-in stagger-2 opacity-0">
+          <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-6 animate-fade-in stagger-2 opacity-0 leading-tight">
             SG SIEMENS<br />
             <span className="text-cyber-gold">MÜNCHEN OST</span>
           </h1>
 
           {/* Subheading */}
-          <p className="text-xl md:text-2xl text-slate-300 mb-10 max-w-xl animate-fade-in stagger-3 opacity-0">
+          <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-300 mb-8 sm:mb-10 max-w-xl animate-fade-in stagger-3 opacity-0">
             Tradition trifft Zukunft. Leidenschaft für den Fußball seit über 70 Jahren.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-wrap gap-4 animate-fade-in stagger-4 opacity-0">
-            <Link to="/mitgliedschaft">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 animate-fade-in stagger-4 opacity-0">
+            <Link to="/mitgliedschaft" className="w-full sm:w-auto">
               <Button 
                 size="lg"
-                className="bg-cyber-gold text-midnight-pitch font-heading uppercase tracking-wider hover:bg-yellow-300 rounded-full px-8 py-6 text-lg btn-primary"
+                className="w-full sm:w-auto bg-cyber-gold text-midnight-pitch font-heading uppercase tracking-wider hover:bg-yellow-300 rounded-full px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base btn-primary"
                 data-testid="hero-cta-mitglied"
               >
-                <Users className="w-5 h-5 mr-2" />
+                <Users className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
                 Mitglied werden
               </Button>
             </Link>
-            <Link to="/erste-mannschaft">
+            <Link to="/erste-mannschaft" className="w-full sm:w-auto">
               <Button 
                 size="lg"
                 variant="outline"
-                className="border-white/30 text-white hover:bg-white/10 font-heading uppercase tracking-wider rounded-full px-8 py-6 text-lg"
+                className="w-full sm:w-auto border-white/30 text-white hover:bg-white/10 font-heading uppercase tracking-wider rounded-full px-6 sm:px-8 py-5 sm:py-6 text-sm sm:text-base"
                 data-testid="hero-cta-team"
               >
                 Unsere Teams
-                <ChevronRight className="w-5 h-5 ml-2" />
+                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2" />
               </Button>
             </Link>
           </div>
