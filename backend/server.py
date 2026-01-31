@@ -269,7 +269,7 @@ async def get_club_info():
         },
         "instagram": "sg_siemens_ost_infineon",
         "instagram_url": "https://www.instagram.com/sg_siemens_ost_infineon",
-        "logo_url": "https://customer-assets.emergentagent.com/job_7c590580-50fa-4ebf-a519-299d708e8357/artifacts/2832tj7i_Herunterladen.png"
+        "logo_url": "/assets/logo.png"
     }
 
 # Include router
