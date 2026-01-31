@@ -1,52 +1,38 @@
-import { useEffect } from "react";
 import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
-  return (
-    <div>
-      <header className="App-header">
-        <a
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
+import { Toaster } from "@/components/ui/sonner";
+import Layout from "@/components/Layout";
+import HomePage from "@/pages/HomePage";
+import TeamPage from "@/pages/TeamPage";
+import NewsPage from "@/pages/NewsPage";
+import ContactPage from "@/pages/ContactPage";
+import MembershipPage from "@/pages/MembershipPage";
+import ClubPage from "@/pages/ClubPage";
+import ContactPersonsPage from "@/pages/ContactPersonsPage";
+import ImpressumPage from "@/pages/ImpressumPage";
+import DatenschutzPage from "@/pages/DatenschutzPage";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App min-h-screen bg-midnight-pitch">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="verein" element={<ClubPage />} />
+            <Route path="erste-mannschaft" element={<TeamPage teamId="erste-mannschaft" />} />
+            <Route path="zweite-mannschaft" element={<TeamPage teamId="zweite-mannschaft" />} />
+            <Route path="traditionsmannschaft" element={<TeamPage teamId="traditionsmannschaft" />} />
+            <Route path="news" element={<NewsPage />} />
+            <Route path="kontakt" element={<ContactPage />} />
+            <Route path="mitgliedschaft" element={<MembershipPage />} />
+            <Route path="ansprechpartner" element={<ContactPersonsPage />} />
+            <Route path="impressum" element={<ImpressumPage />} />
+            <Route path="datenschutz" element={<DatenschutzPage />} />
           </Route>
         </Routes>
       </BrowserRouter>
+      <Toaster position="bottom-right" />
     </div>
   );
 }
