@@ -55,28 +55,28 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-midnight-pitch" data-testid="contact-page">
       {/* Hero */}
-      <section className="py-24 bg-jersey-texture">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <span className="font-accent text-cyber-gold text-sm font-semibold uppercase tracking-wider">
+      <section className="py-16 sm:py-20 md:py-24 bg-jersey-texture">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+          <span className="font-accent text-cyber-gold text-xs sm:text-sm font-semibold uppercase tracking-wider">
             Kontakt
           </span>
-          <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl text-white mt-2">
+          <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mt-2">
             Kontaktiere Uns
           </h1>
-          <p className="text-slate-300 text-lg mt-4 max-w-2xl">
+          <p className="text-slate-300 text-base sm:text-lg mt-4 max-w-2xl">
             Du hast Fragen oder möchtest Teil unseres Vereins werden? Wir freuen uns auf deine Nachricht.
           </p>
         </div>
       </section>
 
       {/* Content */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <section className="py-12 sm:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
             {/* Contact Form */}
             <Card className="bg-jersey-texture border-white/10">
-              <CardContent className="p-8">
-                <h2 className="font-heading text-2xl text-white mb-6">Schreib uns</h2>
+              <CardContent className="p-4 sm:p-6 md:p-8">
+                <h2 className="font-heading text-xl sm:text-2xl text-white mb-4 sm:mb-6">Schreib uns</h2>
                 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
