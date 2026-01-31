@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ChevronRight, Users } from "lucide-react";
 
-const CLUB_LOGO = "https://customer-assets.emergentagent.com/job_7c590580-50fa-4ebf-a519-299d708e8357/artifacts/2832tj7i_Herunterladen.png";
+const CLUB_LOGO = "/assets/logo.png";
 const HERO_BG = "https://images.unsplash.com/photo-1768492263433-b81fdcdce0e9?crop=entropy&cs=srgb&fm=jpg&q=85";
 
 export const Hero = () => {

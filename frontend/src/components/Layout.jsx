@@ -9,7 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-const CLUB_LOGO = "https://customer-assets.emergentagent.com/job_7c590580-50fa-4ebf-a519-299d708e8357/artifacts/2832tj7i_Herunterladen.png";
+const CLUB_LOGO = "/assets/logo.png";
 
 const navLinks = [
   { name: "Verein", path: "/verein" },
