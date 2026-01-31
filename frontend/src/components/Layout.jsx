@@ -167,16 +167,16 @@ export const Header = () => {
 
 export const Footer = () => {
   return (
-    <footer className="bg-slate-950 border-t border-white/10 py-16" data-testid="footer">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+    <footer className="bg-slate-950 border-t border-white/10 py-12 sm:py-16" data-testid="footer">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
           {/* Club Info */}
-          <div>
-            <div className="flex items-center gap-3 mb-6">
+          <div className="col-span-2 md:col-span-1">
+            <div className="flex items-center gap-3 mb-4 sm:mb-6">
               <img 
                 src={CLUB_LOGO} 
                 alt="SG Siemens München Ost" 
-                className="h-16 w-16 object-contain"
+                className="h-12 w-12 sm:h-16 sm:w-16 object-contain"
               />
             </div>
             <p className="text-slate-400 text-sm leading-relaxed">
@@ -187,7 +187,7 @@ export const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-heading text-lg text-white mb-4">Quick Links</h4>
+            <h4 className="font-heading text-base sm:text-lg text-white mb-3 sm:mb-4">Quick Links</h4>
             <ul className="space-y-2">
               <li><Link to="/verein" className="text-slate-400 hover:text-cyber-gold text-sm">Verein</Link></li>
               <li><Link to="/erste-mannschaft" className="text-slate-400 hover:text-cyber-gold text-sm">1. Mannschaft</Link></li>
@@ -198,7 +198,7 @@ export const Footer = () => {
 
           {/* Address */}
           <div>
-            <h4 className="font-heading text-lg text-white mb-4">Adresse</h4>
+            <h4 className="font-heading text-base sm:text-lg text-white mb-3 sm:mb-4">Adresse</h4>
             <address className="text-slate-400 text-sm not-italic leading-relaxed">
               St.-Cajetan-Straße 33<br />
               81669 München<br />
@@ -208,7 +208,7 @@ export const Footer = () => {
 
           {/* Social */}
           <div>
-            <h4 className="font-heading text-lg text-white mb-4">Folge Uns</h4>
+            <h4 className="font-heading text-base sm:text-lg text-white mb-3 sm:mb-4">Folge Uns</h4>
             <a 
               href="https://www.instagram.com/sg_siemens_ost_infineon"
               target="_blank"
@@ -217,19 +217,19 @@ export const Footer = () => {
               data-testid="instagram-link"
             >
               <Instagram className="w-5 h-5" />
-              <span className="text-sm">@sg_siemens_ost_infineon</span>
+              <span className="text-xs sm:text-sm">@sg_siemens_ost_infineon</span>
             </a>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-slate-500 text-sm">
+        <div className="mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-slate-800 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-slate-500 text-xs sm:text-sm text-center sm:text-left">
             © {new Date().getFullYear()} SG Siemens München Ost e.V. Alle Rechte vorbehalten.
           </p>
-          <div className="flex gap-6">
-            <Link to="/impressum" className="text-slate-500 hover:text-white text-sm">Impressum</Link>
-            <Link to="/datenschutz" className="text-slate-500 hover:text-white text-sm">Datenschutz</Link>
+          <div className="flex gap-4 sm:gap-6">
+            <Link to="/impressum" className="text-slate-500 hover:text-white text-xs sm:text-sm">Impressum</Link>
+            <Link to="/datenschutz" className="text-slate-500 hover:text-white text-xs sm:text-sm">Datenschutz</Link>
           </div>
         </div>
       </div>
