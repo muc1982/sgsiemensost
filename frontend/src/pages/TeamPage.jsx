@@ -63,19 +63,19 @@ export default function TeamPage({ teamId }) {
   return (
     <div className="min-h-screen bg-midnight-pitch" data-testid={`team-page-${teamId}`}>
       {/* Hero Section */}
-      <section className="relative h-80 overflow-hidden">
+      <section className="relative h-64 sm:h-72 md:h-80 overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${TEAM_BACKGROUNDS[teamId]})` }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-midnight-pitch via-midnight-pitch/80 to-transparent" />
         
-        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-12 h-full flex items-end pb-12">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 md:px-12 h-full flex items-end pb-8 sm:pb-12">
           <div>
-            <span className="font-accent text-cyber-gold text-sm font-semibold uppercase tracking-wider">
+            <span className="font-accent text-cyber-gold text-xs sm:text-sm font-semibold uppercase tracking-wider">
               SG Siemens München Ost
             </span>
-            <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl text-white mt-2">
+            <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white mt-2">
               {team?.name}
             </h1>
           </div>
@@ -83,10 +83,10 @@ export default function TeamPage({ teamId }) {
       </section>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-6 md:px-12 py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-6 sm:py-8">
         {/* Description */}
         {team?.description && (
-          <p className="text-slate-300 text-lg max-w-3xl mb-12">
+          <p className="text-slate-300 text-base sm:text-lg max-w-3xl mb-8 sm:mb-12">
             {team.description}
           </p>
         )}

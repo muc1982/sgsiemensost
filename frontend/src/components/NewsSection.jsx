@@ -147,18 +147,18 @@ export const NewsSection = ({ limit = 4, showInstagram = true }) => {
   const otherNews = news.filter(n => n.id !== featuredNews?.id).slice(0, 3);
 
   return (
-    <section className="py-24 bg-midnight-pitch" data-testid="news-section">
-      <div className="max-w-7xl mx-auto px-6 md:px-12">
+    <section className="py-16 sm:py-20 md:py-24 bg-midnight-pitch" data-testid="news-section">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12">
         {/* Section Header */}
-        <div className="flex items-center justify-between mb-12">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-8 sm:mb-12 gap-4">
           <div>
-            <span className="font-accent text-cyber-gold text-sm font-semibold uppercase tracking-wider">Aktuelles</span>
-            <h2 className="font-heading text-4xl md:text-5xl text-white mt-2">News & Updates</h2>
+            <span className="font-accent text-cyber-gold text-xs sm:text-sm font-semibold uppercase tracking-wider">Aktuelles</span>
+            <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl text-white mt-2">News & Updates</h2>
           </div>
           <Link to="/news">
             <Button 
               variant="outline" 
-              className="hidden md:flex border-white/30 text-white hover:bg-white/10 font-heading uppercase tracking-wider"
+              className="hidden sm:flex border-white/30 text-white hover:bg-white/10 font-heading uppercase tracking-wider"
             >
               Alle News
               <ArrowRight className="w-4 h-4 ml-2" />
@@ -186,7 +186,7 @@ export const NewsSection = ({ limit = 4, showInstagram = true }) => {
         </div>
 
         {/* Mobile CTA */}
-        <div className="mt-8 md:hidden">
+        <div className="mt-6 sm:mt-8 sm:hidden">
           <Link to="/news">
             <Button 
               className="w-full bg-electric-royal text-white font-heading uppercase tracking-wider"
