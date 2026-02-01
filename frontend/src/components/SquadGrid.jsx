@@ -100,7 +100,7 @@ export const SquadGrid = ({ players = [], title = "Kader" }) => {
   return (
     <section className="py-12" data-testid="squad-grid">
       <h2 className="font-heading text-2xl sm:text-3xl text-white mb-8 uppercase">{title}</h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-4">
         {sortedPlayers.map((player, index) => (
           <PlayerCard key={player.id || index} player={player} />
         ))}
@@ -113,7 +113,7 @@ export const CoachesGrid = ({ coaches = [], title = "Trainerteam" }) => {
   return (
     <section className="py-12" data-testid="coaches-grid">
       <h2 className="font-heading text-2xl sm:text-3xl text-white mb-8 uppercase">{title}</h2>
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-4">
         {coaches.map((coach, index) => (
           <CoachCard key={coach.id || index} coach={coach} />
         ))}

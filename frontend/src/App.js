@@ -5,6 +5,7 @@ import Layout from "@/components/Layout";
 import HomePage from "@/pages/HomePage";
 import TeamPage from "@/pages/TeamPage";
 import NewsPage from "@/pages/NewsPage";
+import NewsDetailPage from "@/pages/NewsDetailPage";
 import ContactPage from "@/pages/ContactPage";
 import MembershipPage from "@/pages/MembershipPage";
 import ClubPage from "@/pages/ClubPage";
@@ -25,6 +26,7 @@ function App() {
             <Route path="zweite-mannschaft" element={<TeamPage teamId="zweite-mannschaft" />} />
             <Route path="traditionsmannschaft" element={<TeamPage teamId="traditionsmannschaft" />} />
             <Route path="news" element={<NewsPage />} />
+            <Route path="news/:slug" element={<NewsDetailPage />} />
             <Route path="kontakt" element={<ContactPage />} />
             <Route path="mitgliedschaft" element={<MembershipPage />} />
             <Route path="ansprechpartner" element={<ContactPersonsPage />} />

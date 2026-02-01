@@ -7,7 +7,7 @@ export const TEAMS_DATA = {
     description: "Unsere erste Mannschaft spielt in der Kreisliga München.",
     coaches: [
       { id: "1", name: "Vedat Karaüzüm", role: "Cheftrainer", image_url: null },
-      { id: "2", name: "Hendrik Grothusheidkamp", role: "Co-Trainer", image_url: null },
+      { id: "2", name: "Hendrik Grothusheidkamp", role: "Trainerassistent", image_url: null },
     ],
     players: [
       { id: "1", name: "Max Mustermann", position: "Torwart", number: 1, is_captain: false },
@@ -41,7 +41,7 @@ export const CONTACT_PERSONS = [
   { id: "1", name: "Philipp Kruppa", role: "Abteilungsleiter", image_url: null },
   { id: "2", name: "Ulrich Auwärter", role: "Stellv. Abteilungsleiter", image_url: null },
   { id: "3", name: "Yasin Sun", role: "Teammanager", image_url: null },
-  { id: "4", name: "Kassenwart", role: "Torsten Wegener", image_url: null },
+  { id: "4", name: "Torsten Wegener", role: "Kassenwart", image_url: null },
   { id: "5", name: "Technischer Leiter", role: "Hans Hellebrand", image_url: null },
   { id: "5", name: "Schriftführer", role: "Thomas Bayerle", image_url: null },
 ];

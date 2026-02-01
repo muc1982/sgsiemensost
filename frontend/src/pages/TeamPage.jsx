@@ -1,4 +1,6 @@
+import { useState, useEffect } from "react";
 import { SquadGrid, CoachesGrid } from "@/components/SquadGrid";
+import { getTeamData } from "@/services/contentful";
 import { TEAMS_DATA } from "@/data/staticData";
 
 const TEAM_BACKGROUNDS = {
@@ -8,7 +10,40 @@ const TEAM_BACKGROUNDS = {
 };
 
 export default function TeamPage({ teamId }) {
-  const team = TEAMS_DATA[teamId];
+  const [team, setTeam] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const loadTeam = async () => {
+      setLoading(true);
+      try {
+        // Statische Daten als Basis holen
+        const staticData = TEAMS_DATA[teamId];
+        
+        // Contentful-Daten laden und mit statischen Daten zusammenführen
+        const mergedData = await getTeamData(teamId, staticData);
+        setTeam(mergedData);
+      } catch (error) {
+        console.error('Fehler beim Laden:', error);
+        // Fallback zu statischen Daten bei Fehler
+        setTeam(TEAMS_DATA[teamId] || null);
+      }
+      setLoading(false);
+    };
+
+    loadTeam();
+  }, [teamId]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-midnight-pitch flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-cyber-gold mx-auto mb-4"></div>
+          <p className="text-slate-400">Lade Team-Daten...</p>
+        </div>
+      </div>
+    );
+  }
 
   if (!team) {
     return (
@@ -52,12 +87,12 @@ export default function TeamPage({ teamId }) {
           </p>
         )}
 
-        {/* Coaches */}
+        {/* Coaches - bleiben aus statischen Daten */}
         {team.coaches && team.coaches.length > 0 && (
           <CoachesGrid coaches={team.coaches} title="Trainerteam" />
         )}
 
-        {/* Players */}
+        {/* Players - statische + Contentful zusammengeführt */}
         {team.players && team.players.length > 0 && (
           <SquadGrid players={team.players} title="Kader" />
         )}

@@ -14,60 +14,68 @@ const formatDate = (dateString) => {
 };
 
 export const NewsCard = ({ news, featured = false }) => {
-  const { title, excerpt, image_url, published_at } = news;
+  const { title, excerpt, image_url, published_at, slug } = news;
 
   if (featured) {
     return (
-      <Card className="bg-jersey-texture border-white/10 overflow-hidden group cursor-pointer hover:border-electric-royal/50 transition-colors duration-300">
-        <div className="relative h-64 overflow-hidden">
-          {image_url ? (
-            <img 
-              src={image_url} 
-              alt={title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-          ) : (
-            <div className="w-full h-full bg-gradient-to-br from-electric-royal/20 to-cyber-gold/10" />
-          )}
-          <div className="absolute inset-0 bg-gradient-to-t from-midnight-pitch via-transparent to-transparent" />
-        </div>
-        <CardContent className="p-6">
-          <div className="flex items-center gap-2 text-slate-400 text-sm mb-3">
-            <Calendar className="w-4 h-4" />
-            <span>{formatDate(published_at)}</span>
+      <Link to={`/news/${slug}`}>
+        <Card className="bg-jersey-texture border-white/10 overflow-hidden group cursor-pointer hover:border-electric-royal/50 transition-colors duration-300">
+          <div className="relative h-64 overflow-hidden">
+            {image_url ? (
+              <img 
+                src={image_url} 
+                alt={title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-electric-royal/20 to-cyber-gold/10" />
+            )}
+            <div className="absolute inset-0 bg-gradient-to-t from-midnight-pitch via-transparent to-transparent" />
           </div>
-          <h3 className="font-heading text-2xl text-white group-hover:text-cyber-gold transition-colors duration-300 mb-3">
-            {title}
-          </h3>
-          <p className="text-slate-400 line-clamp-2">{excerpt}</p>
-        </CardContent>
-      </Card>
+          <CardContent className="p-6">
+            <div className="flex items-center gap-2 text-slate-400 text-sm mb-3">
+              <Calendar className="w-4 h-4" />
+              <span>{formatDate(published_at)}</span>
+            </div>
+            <h3 className="font-heading text-2xl text-white group-hover:text-cyber-gold transition-colors duration-300 mb-3">
+              {title}
+            </h3>
+            <p className="text-slate-400 line-clamp-2">{excerpt}</p>
+            <div className="mt-4 flex items-center text-electric-royal group-hover:text-cyber-gold transition-colors">
+              <span className="text-sm font-medium">Weiterlesen</span>
+              <ArrowRight className="w-4 h-4 ml-2" />
+            </div>
+          </CardContent>
+        </Card>
+      </Link>
     );
   }
 
   return (
-    <Card className="bg-jersey-texture border-white/10 overflow-hidden group cursor-pointer hover:border-electric-royal/50 transition-colors duration-300">
-      <CardContent className="p-4 flex gap-4">
-        {image_url && (
-          <div className="w-24 h-24 flex-shrink-0 rounded overflow-hidden">
-            <img 
-              src={image_url} 
-              alt={title}
-              className="w-full h-full object-cover"
-            />
+    <Link to={`/news/${slug}`}>
+      <Card className="bg-jersey-texture border-white/10 overflow-hidden group cursor-pointer hover:border-electric-royal/50 transition-colors duration-300">
+        <CardContent className="p-4 flex gap-4">
+          {image_url && (
+            <div className="w-24 h-24 flex-shrink-0 rounded overflow-hidden">
+              <img 
+                src={image_url} 
+                alt={title}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          )}
+          <div className="flex-1">
+            <div className="flex items-center gap-2 text-slate-500 text-xs mb-2">
+              <Calendar className="w-3 h-3" />
+              <span>{formatDate(published_at)}</span>
+            </div>
+            <h4 className="font-heading text-base text-white group-hover:text-cyber-gold transition-colors duration-300 line-clamp-2">
+              {title}
+            </h4>
           </div>
-        )}
-        <div className="flex-1">
-          <div className="flex items-center gap-2 text-slate-500 text-xs mb-2">
-            <Calendar className="w-3 h-3" />
-            <span>{formatDate(published_at)}</span>
-          </div>
-          <h4 className="font-heading text-base text-white group-hover:text-cyber-gold transition-colors duration-300 line-clamp-2">
-            {title}
-          </h4>
-        </div>
-      </CardContent>
-    </Card>
+        </CardContent>
+      </Card>
+    </Link>
   );
 };
 
