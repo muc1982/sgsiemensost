@@ -183,10 +183,10 @@ export default function NewsDetailPage() {
                 )}
                 <div className="absolute inset-0 bg-gradient-to-t from-midnight-pitch via-midnight-pitch/10 to-transparent" />
 
-                {/* Zurück-Button */}
+                {/* Zurück-Button - BLAU wie unten */}
                 <div className="absolute top-4 left-4 sm:top-6 sm:left-6 z-20">
                     <Link to="/news">
-                        <Button variant="outline" size="sm" className="border-white/30 text-white hover:bg-white/10">
+                        <Button size="sm" className="bg-electric-royal text-white hover:bg-electric-royal/80">
                             <ArrowLeft className="w-4 h-4 mr-2" />
                             Zurück
                         </Button>

@@ -6,6 +6,8 @@ import HomePage from "@/pages/HomePage";
 import TeamPage from "@/pages/TeamPage";
 import NewsPage from "@/pages/NewsPage";
 import NewsDetailPage from "@/pages/NewsDetailPage";
+import GalleryPage from "@/pages/GalleryPage";
+import GalleryDetailPage from "@/pages/GalleryDetailPage";
 import ContactPage from "@/pages/ContactPage";
 import MembershipPage from "@/pages/MembershipPage";
 import ClubPage from "@/pages/ClubPage";
@@ -27,6 +29,8 @@ function App() {
             <Route path="traditionsmannschaft" element={<TeamPage teamId="traditionsmannschaft" />} />
             <Route path="news" element={<NewsPage />} />
             <Route path="news/:slug" element={<NewsDetailPage />} />
+            <Route path="galerie" element={<GalleryPage />} />
+            <Route path="galerie/:slug" element={<GalleryDetailPage />} />
             <Route path="kontakt" element={<ContactPage />} />
             <Route path="mitgliedschaft" element={<MembershipPage />} />
             <Route path="ansprechpartner" element={<ContactPersonsPage />} />

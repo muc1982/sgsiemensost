@@ -4,13 +4,13 @@ export const TEAMS_DATA = {
   "erste-mannschaft": {
     id: "erste-mannschaft",
     name: "1. Mannschaft",
-    description: "Unsere erste Mannschaft spielt in der Kreisliga München.",
+    description: "Unsere erste Mannschaft spielt in der Behörden Kreisliga München.",
     coaches: [
       { id: "1", name: "Vedat Karaüzüm", role: "Cheftrainer", image_url: null },
       { id: "2", name: "Hendrik Grothusheidkamp", role: "Trainerassistent", image_url: null },
     ],
     players: [
-      { id: "1", name: "Max Mustermann", position: "Torwart", number: 1, is_captain: false },
+      { id: "1", name: "", position: "", number: "", is_captain: false },
     ]
   },
   "zweite-mannschaft": {
@@ -18,10 +18,10 @@ export const TEAMS_DATA = {
     name: "2. Mannschaft",
     description: "Unsere zweite Mannschaft bietet Spielern die Möglichkeit, sich zu entwickeln.",
     coaches: [
-      { id: "1", name: "Test Mustermann", role: "Trainer", image_url: null },
+      { id: "1", name: "", role: "", image_url: null },
     ],
     players: [
-      { id: "1", name: "Test Mustermann", position: "Torwart", number: 1, is_captain: false },
+      { id: "1", name: "", position: "", number: "", is_captain: false },
     ]
   },
   "traditionsmannschaft": {
@@ -29,10 +29,10 @@ export const TEAMS_DATA = {
     name: "Traditionsmannschaft",
     description: "Unsere Traditionsmannschaft vereint ehemalige Spieler und Veteranen des Vereins.",
     coaches: [
-      { id: "1", name: "Max Mustermann", role: "Cheftrainer", image_url: null },
+      { id: "1", name: "", role: "", image_url: null },
     ],
     players: [
-      { id: "1", name: "Max Mustermann", position: "Torwart", number: 1, is_captain: false },
+      { id: "1", name: "", position: "", number:"", is_captain: false },
     ]
   }
 };

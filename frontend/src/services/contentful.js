@@ -183,4 +183,84 @@ export const getTeamData = async (teamSlug, staticTeamData) => {
   }
 };
 
+// Galerien abrufen
+export const getGalleries = async () => {
+  try {
+    const response = await client.getEntries({
+      content_type: 'gallery',
+      order: ['-fields.date'],
+    });
+
+    const galleries = await Promise.all(
+      response.items.map(async (item) => {
+        // Erstes Bild als Cover verwenden
+        let coverImage = null;
+        let imageCount = 0;
+
+        if (item.fields.images && item.fields.images.length > 0) {
+          imageCount = item.fields.images.length;
+          coverImage = await resolveAssetUrl(item.fields.images[0]);
+        }
+
+        return {
+          id: item.sys.id,
+          title: item.fields.title || '',
+          slug: item.fields.slug || '',
+          description: item.fields.description || '',
+          date: item.fields.date || '',
+          category: item.fields.category || 'Sonstiges',
+          cover_image: coverImage,
+          image_count: imageCount,
+        };
+      })
+    );
+
+    return galleries;
+  } catch (error) {
+    console.error('Fehler beim Laden der Galerien:', error);
+    return [];
+  }
+};
+
+// Einzelne Galerie nach Slug abrufen
+export const getGalleryBySlug = async (slug) => {
+  try {
+    const response = await client.getEntries({
+      content_type: 'gallery',
+      'fields.slug': slug,
+      limit: 1,
+    });
+
+    if (response.items.length === 0) {
+      return null;
+    }
+
+    const item = response.items[0];
+
+    // Alle Bilder laden
+    const images = [];
+    if (item.fields.images && item.fields.images.length > 0) {
+      for (const imageRef of item.fields.images) {
+        const imageUrl = await resolveAssetUrl(imageRef);
+        if (imageUrl) {
+          images.push(imageUrl);
+        }
+      }
+    }
+
+    return {
+      id: item.sys.id,
+      title: item.fields.title || '',
+      slug: item.fields.slug || '',
+      description: item.fields.description || '',
+      date: item.fields.date || '',
+      category: item.fields.category || 'Sonstiges',
+      images: images,
+    };
+  } catch (error) {
+    console.error('Fehler beim Laden der Galerie:', error);
+    return null;
+  }
+};
+
 export default client;
