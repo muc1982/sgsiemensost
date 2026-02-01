@@ -33,15 +33,14 @@ export default function ClubPage() {
                 Unser Verein
               </h1>
               <p className="text-slate-300 text-lg mt-6 max-w-xl">
-                Die SG Siemens München Ost e.V. ist seit 1954 ein fester Bestandteil des Münchner Amateurfußballs. 
-                Mit drei aktiven Mannschaften bieten wir Spielern jeden Alters eine sportliche Heimat.
+                Die SG Siemens München Ost e.V. ist seit ihrer Gründung im Jahr 1954 ein fester und traditionsreicher Bestandteil des Münchner Amateurfußballs. Mit derzeit drei aktiven Mannschaften bieten wir fußballbegeisterten Spielern aller Altersklassen eine sportliche Heimat, in der Teamgeist, Fairness und die Freude am Spiel im Mittelpunkt stehen. Unser Verein verbindet sportlichen Ehrgeiz mit einem starken Gemeinschaftsgefühl und ist seit Jahrzehnten ein verlässlicher Anlaufpunkt für Fußball in München-Ost.
               </p>
             </div>
             <div className="flex-shrink-0">
-              <img 
-                src={CLUB_LOGO} 
-                alt="SG Siemens München Ost" 
-                className="w-48 h-48 object-contain"
+              <img
+                src={CLUB_LOGO}
+                alt="SG Siemens München Ost"
+                className="h-14 w-14 object-contain brightness-0 invert"
               />
             </div>
           </div>
@@ -73,11 +72,11 @@ export default function ClubPage() {
           <div className="relative">
             {/* Timeline Line */}
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-electric-royal/30 hidden md:block" />
-            
+
             <div className="space-y-8">
               {timeline.map((item, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className={`flex items-center gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
                 >
                   <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
@@ -86,10 +85,10 @@ export default function ClubPage() {
                       <p className="text-slate-300 mt-2">{item.event}</p>
                     </div>
                   </div>
-                  
+
                   {/* Timeline Point */}
                   <div className="hidden md:flex w-4 h-4 bg-electric-royal rounded-full flex-shrink-0 z-10" />
-                  
+
                   <div className="flex-1" />
                 </div>
               ))}
@@ -109,7 +108,7 @@ export default function ClubPage() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/ansprechpartner">
-              <Button 
+              <Button
                 size="lg"
                 className="bg-cyber-gold text-midnight-pitch font-heading uppercase tracking-wider hover:bg-yellow-300 rounded-full px-8"
               >
@@ -118,7 +117,7 @@ export default function ClubPage() {
               </Button>
             </Link>
             <Link to="/kontakt">
-              <Button 
+              <Button
                 size="lg"
                 variant="outline"
                 className="border-white/30 text-white hover:bg-white/10 font-heading uppercase tracking-wider rounded-full px-8"

@@ -11,6 +11,7 @@ import ClubPage from "@/pages/ClubPage";
 import ContactPersonsPage from "@/pages/ContactPersonsPage";
 import ImpressumPage from "@/pages/ImpressumPage";
 import DatenschutzPage from "@/pages/DatenschutzPage";
+import CookieConsent from "@/components/CookieConsent";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           </Route>
         </Routes>
       </BrowserRouter>
+      <CookieConsent />
       <Toaster position="bottom-right" />
     </div>
   );

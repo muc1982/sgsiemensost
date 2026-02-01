@@ -42,7 +42,7 @@ export const Header = () => {
             <img 
               src={CLUB_LOGO} 
               alt="SG Siemens München Ost" 
-              className="h-14 w-14 object-contain"
+              className="h-24 w-24 object-contain"
             />
             <span className="hidden md:block font-heading text-lg text-white tracking-wide">
               SG Siemens München Ost
@@ -173,11 +173,11 @@ export const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
           {/* Club Info */}
           <div className="col-span-2 md:col-span-1">
-            <div className="flex items-center gap-3 mb-4 sm:mb-6">
+            <div className="flex items-center gap0 mb0 sm:mb0">
               <img 
                 src={CLUB_LOGO} 
                 alt="SG Siemens München Ost" 
-                className="h-12 w-12 sm:h-16 sm:w-16 object-contain"
+                className="h-12 w-12 sm:h-24 sm:w-24 object-contain"
               />
             </div>
             <p className="text-slate-400 text-sm leading-relaxed">

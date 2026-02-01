@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { SquadGrid, CoachesGrid } from "@/components/SquadGrid";
 import { TEAMS_DATA } from "@/data/staticData";
 
@@ -9,7 +8,6 @@ const TEAM_BACKGROUNDS = {
 };
 
 export default function TeamPage({ teamId }) {
-  // Statische Daten verwenden
   const team = TEAMS_DATA[teamId];
 
   if (!team) {
@@ -46,10 +44,10 @@ export default function TeamPage({ teamId }) {
       </section>
 
       {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-6 sm:py-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 py-8">
         {/* Description */}
         {team.description && (
-          <p className="text-slate-300 text-base sm:text-lg max-w-3xl mb-8 sm:mb-12">
+          <p className="text-slate-300 text-base sm:text-lg max-w-3xl mb-8">
             {team.description}
           </p>
         )}

@@ -38,7 +38,7 @@ export const Hero = () => {
             <img 
               src={CLUB_LOGO} 
               alt="SG Siemens München Ost" 
-              className="h-24 w-24 sm:h-28 sm:w-28 md:h-32 md:w-32 object-contain"
+              className="h-24 w-24 sm:h-28 sm:w-48 md:h-48 md:w-48 object-contain"
             />
           </div>
 

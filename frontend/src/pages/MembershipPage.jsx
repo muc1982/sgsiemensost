@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Users, Trophy, Heart, ArrowRight } from "lucide-react";
+import { Check, Users, Trophy, Heart, ArrowRight, Download, FileText } from "lucide-react";
 
 const benefits = [
   "Aktive Teilnahme am Spielbetrieb",
@@ -30,6 +30,28 @@ const membershipTypes = [
     icon: Users,
     description: "Für Unternehmen und Privatpersonen, die uns unterstützen möchten.",
     features: ["Sponsoring-Optionen", "Nennung auf Website", "VIP-Zugang bei Events"],
+  },
+];
+
+// Download-Dokumente
+const documents = [
+  {
+    title: "Aufnahmeantrag",
+    description: "Antrag zur Mitgliedschaft im Verein",
+    filename: "Aufnahmeantrag.pdf",
+    url: "/assets/documents/Aufnahmeantrag.pdf"
+  },
+  {
+    title: "Jahres-Mitgliedsbeiträge",
+    description: "Übersicht der aktuellen Beiträge",
+    filename: "Mitgliedsbeitraege.pdf",
+    url: "/assets/documents/Mitgliedsbeitraege.pdf"
+  },
+  {
+    title: "Vereinssatzung",
+    description: "Satzung der SG Siemens München Ost e.V.",
+    filename: "Vereinssatzung.pdf",
+    url: "/assets/documents/Vereinssatzung.pdf"
   },
 ];
 
@@ -98,8 +120,47 @@ export default function MembershipPage() {
         </div>
       </section>
 
+      {/* Downloads */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <h2 className="font-heading text-3xl text-white mb-4">Downloads</h2>
+          <p className="text-slate-400 mb-8">Hier findest du alle wichtigen Dokumente zur Mitgliedschaft.</p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {documents.map((doc, index) => (
+              <a
+                key={index}
+                href={doc.url}
+                download={doc.filename}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+              >
+                <div className="bg-jersey-texture rounded-lg border border-white/10 p-6 hover:border-electric-royal/50 transition-all duration-300 h-full">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-electric-royal/20 rounded-lg flex items-center justify-center flex-shrink-0 group-hover:bg-electric-royal/30 transition-colors">
+                      <FileText className="w-6 h-6 text-electric-royal" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-heading text-lg text-white group-hover:text-cyber-gold transition-colors">
+                        {doc.title}
+                      </h3>
+                      <p className="text-slate-400 text-sm mt-1">{doc.description}</p>
+                    </div>
+                  </div>
+                  <div className="mt-4 flex items-center gap-2 text-electric-royal group-hover:text-cyber-gold transition-colors">
+                    <Download className="w-4 h-4" />
+                    <span className="text-sm font-medium">PDF herunterladen</span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
-      <section className="py-24">
+      <section className="py-24 bg-jersey-texture">
         <div className="max-w-4xl mx-auto px-6 md:px-12 text-center">
           <h2 className="font-heading text-3xl md:text-4xl text-white mb-6">
             Interesse geweckt?
@@ -109,7 +170,7 @@ export default function MembershipPage() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link to="/kontakt">
-              <Button 
+              <Button
                 size="lg"
                 className="bg-cyber-gold text-midnight-pitch font-heading uppercase tracking-wider hover:bg-yellow-300 rounded-full px-8"
                 data-testid="membership-contact-btn"
@@ -119,7 +180,7 @@ export default function MembershipPage() {
               </Button>
             </Link>
             <Link to="/ansprechpartner">
-              <Button 
+              <Button
                 size="lg"
                 variant="outline"
                 className="border-white/30 text-white hover:bg-white/10 font-heading uppercase tracking-wider rounded-full px-8"
