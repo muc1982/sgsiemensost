@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, Trophy, Users, Target } from "lucide-react";
+import { ArrowRight, Trophy, Users, Target } from "lucide-react";
 
 const CLUB_LOGO = "/assets/logo.png";
 
@@ -13,9 +13,21 @@ const timeline = [
 ];
 
 const values = [
-  { icon: Users, title: "Gemeinschaft", description: "Zusammenhalt und Teamgeist stehen bei uns an erster Stelle." },
-  { icon: Trophy, title: "Leidenschaft", description: "Fußball ist unsere Passion - auf und neben dem Platz." },
-  { icon: Target, title: "Entwicklung", description: "Wir fördern Spieler jeden Alters und Niveaus." },
+  {
+    icon: Users,
+    title: "Gemeinschaft",
+    description: "Zusammenhalt und Teamgeist stehen bei uns an erster Stelle.",
+  },
+  {
+    icon: Trophy,
+    title: "Leidenschaft",
+    description: "Fußball ist unsere Passion - auf und neben dem Platz.",
+  },
+  {
+    icon: Target,
+    title: "Entwicklung",
+    description: "Wir fördern Spieler jeden Alters und Niveaus.",
+  },
 ];
 
 export default function ClubPage() {
@@ -32,10 +44,42 @@ export default function ClubPage() {
               <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl text-white mt-2">
                 Unser Verein
               </h1>
-              <p className="text-slate-300 text-lg mt-6 max-w-xl">
-                Die SG Siemens München Ost e.V. ist seit ihrer Gründung im Jahr 1954 ein fester und traditionsreicher Bestandteil des Münchner Amateurfußballs. Mit derzeit drei aktiven Mannschaften bieten wir fußballbegeisterten Spielern aller Altersklassen eine sportliche Heimat, in der Teamgeist, Fairness und die Freude am Spiel im Mittelpunkt stehen. Unser Verein verbindet sportlichen Ehrgeiz mit einem starken Gemeinschaftsgefühl und ist seit Jahrzehnten ein verlässlicher Anlaufpunkt für Fußball in München-Ost.
+
+              {/* TEXT NUR STRUKTURIERT (Design bleibt gleich) */}
+              <p className="text-slate-300 text-lg mt-6 max-w-xl whitespace-pre-line">
+                {`SG Siemens München Ost e.V.
+Sport. Gemeinschaft. Leidenschaft.
+
+Die SG Siemens München Ost e.V. ist ein traditionsreicher Sportverein im Münchner Osten. Seit unserer Gründung stehen Bewegung, Teamgeist und Gemeinschaft im Mittelpunkt unseres Vereinslebens.
+Bei uns treffen sich Menschen aller Altersgruppen, um gemeinsam Sport zu treiben, sich fit zu halten und Teil einer starken Gemeinschaft zu sein.
+
+Unser Sportangebot
+Ob leistungsorientiert oder aus Freude an Bewegung – bei uns findet jeder den passenden Ausgleich.
+Unser vielfältiges Angebot umfasst unter anderem:
+
+• Fußball
+• Badminton
+• Volleyball
+• Tischtennis
+• Karate
+• Gymnastik & Fitness
+• Kegeln
+• Weitere Hallensportarten
+
+Trainiert wird in modernen Sportstätten im Münchner Osten – in familiärer Atmosphäre und mit engagierten Übungsleitern.
+
+Mehr als nur Sport
+Die SG Siemens München Ost steht für Fairness, Respekt und Zusammenhalt. Neben dem sportlichen Training legen wir großen Wert auf ein aktives Vereinsleben, gegenseitige Unterstützung und gemeinsame Veranstaltungen.
+Neue Mitglieder sind jederzeit herzlich willkommen – egal ob Anfänger oder erfahrene Sportler.
+
+Unser Leitbild
+• Gemeinschaft statt Einzelkampf
+• Sport mit Spaß und Fairness
+• Offen für alle Generationen
+• Aktiv, engagiert und bodenständig`}
               </p>
             </div>
+
             <div className="flex-shrink-0">
               <img
                 src={CLUB_LOGO}
@@ -50,14 +94,21 @@ export default function ClubPage() {
       {/* Values */}
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <h2 className="font-heading text-3xl text-white mb-8 text-center">Unsere Werte</h2>
+          <h2 className="font-heading text-3xl text-white mb-8 text-center">
+            Unsere Werte
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {values.map((value, index) => (
-              <div key={index} className="bg-jersey-texture rounded-lg border border-white/10 p-8 text-center">
+              <div
+                key={index}
+                className="bg-jersey-texture rounded-lg border border-white/10 p-8 text-center"
+              >
                 <div className="w-16 h-16 bg-electric-royal/20 rounded-full flex items-center justify-center mx-auto mb-6">
                   <value.icon className="w-8 h-8 text-electric-royal" />
                 </div>
-                <h3 className="font-heading text-xl text-white mb-3">{value.title}</h3>
+                <h3 className="font-heading text-xl text-white mb-3">
+                  {value.title}
+                </h3>
                 <p className="text-slate-400">{value.description}</p>
               </div>
             ))}
@@ -68,7 +119,9 @@ export default function ClubPage() {
       {/* Timeline */}
       <section className="py-16 bg-jersey-texture">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <h2 className="font-heading text-3xl text-white mb-12 text-center">Unsere Geschichte</h2>
+          <h2 className="font-heading text-3xl text-white mb-12 text-center">
+            Unsere Geschichte
+          </h2>
           <div className="relative">
             {/* Timeline Line */}
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-electric-royal/30 hidden md:block" />
@@ -77,11 +130,17 @@ export default function ClubPage() {
               {timeline.map((item, index) => (
                 <div
                   key={index}
-                  className={`flex items-center gap-8 ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
+                  className={`flex items-center gap-8 ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+                    }`}
                 >
-                  <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
+                  <div
+                    className={`flex-1 ${index % 2 === 0 ? "md:text-right" : "md:text-left"
+                      }`}
+                  >
                     <div className="bg-midnight-pitch rounded-lg border border-white/10 p-6 inline-block">
-                      <span className="font-accent text-cyber-gold text-2xl font-bold">{item.year}</span>
+                      <span className="font-accent text-cyber-gold text-2xl font-bold">
+                        {item.year}
+                      </span>
                       <p className="text-slate-300 mt-2">{item.event}</p>
                     </div>
                   </div>

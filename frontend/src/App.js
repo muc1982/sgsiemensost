@@ -14,6 +14,7 @@ import ClubPage from "@/pages/ClubPage";
 import ContactPersonsPage from "@/pages/ContactPersonsPage";
 import ImpressumPage from "@/pages/ImpressumPage";
 import DatenschutzPage from "@/pages/DatenschutzPage";
+import UeberUnsPage from "@/pages/UeberUnsPage";
 import CookieConsent from "@/components/CookieConsent";
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
             <Route path="kontakt" element={<ContactPage />} />
             <Route path="mitgliedschaft" element={<MembershipPage />} />
             <Route path="ansprechpartner" element={<ContactPersonsPage />} />
+            <Route path="ueber-uns" element={<UeberUnsPage />} />
             <Route path="impressum" element={<ImpressumPage />} />
             <Route path="datenschutz" element={<DatenschutzPage />} />
           </Route>

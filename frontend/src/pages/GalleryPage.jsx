@@ -15,6 +15,8 @@ const formatDate = (dateString) => {
 
 const GalleryCard = ({ gallery }) => {
     const { title, slug, description, date, category, cover_image, image_count } = gallery;
+    // Nur ersten Absatz als Vorschau zeigen
+    const previewText = description ? String(description).split('\n')[0] : '';
 
     return (
         <Link to={`/galerie/${slug}`}>
@@ -57,8 +59,10 @@ const GalleryCard = ({ gallery }) => {
                     <h3 className="font-heading text-lg text-white group-hover:text-cyber-gold transition-colors duration-300 line-clamp-2">
                         {title}
                     </h3>
-                    {description && (
-                        <p className="text-slate-400 text-sm mt-2 line-clamp-2">{description}</p>
+                    {previewText && (
+                        <p className="text-slate-400 text-sm mt-2 line-clamp-3 leading-relaxed">
+                            {previewText}
+                        </p>
                     )}
                 </div>
             </div>
@@ -72,7 +76,7 @@ export default function GalleryPage() {
     const [loading, setLoading] = useState(true);
     const [activeFilter, setActiveFilter] = useState('Alle');
 
-    const categories = ['Alle', 'Feier', 'Spiel', 'Veranstaltung', 'Training'];
+    const categories = ['Alle', 'Nostalgie', 'Feier', 'Spiel', 'Veranstaltung', 'Training'];
 
     useEffect(() => {
         const loadGalleries = async () => {

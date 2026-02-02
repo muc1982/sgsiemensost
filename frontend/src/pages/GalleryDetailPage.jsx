@@ -176,9 +176,13 @@ export default function GalleryDetailPage() {
                     </h1>
 
                     {gallery.description && (
-                        <p className="text-slate-300 text-lg mt-4 max-w-3xl">
-                            {gallery.description}
-                        </p>
+                        <div className="mt-6 max-w-3xl space-y-4">
+                            {String(gallery.description).split('\n').filter(p => p.trim()).map((paragraph, index) => (
+                                <p key={index} className="text-slate-300 text-lg leading-relaxed">
+                                    {paragraph}
+                                </p>
+                            ))}
+                        </div>
                     )}
                 </div>
             </section>

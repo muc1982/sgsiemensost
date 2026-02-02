@@ -1,0 +1,171 @@
+{
+  "design_system": {
+    "identity": {
+      "name": "SG Siemens München Ost e.V. - Digital Experience",
+      "tone": "Athletic, Premium, Community-Rooted, Electric",
+      "theme_strategy": "Dark Mode Default (The 'Stadium at Night' Aesthetic)",
+      "principles": [
+        "Motion is Energy: The site must feel like a match in progress.",
+        "Data is Art: Player stats and grids should look like trading cards, not spreadsheets.",
+        "Community First: The 'Verein' is the hero, not just the 1st team."
+      ]
+    },
+    "typography": {
+      "font_family": {
+        "headings": "Oswald, sans-serif",
+        "body": "Inter, sans-serif",
+        "accent": "Barlow Condensed, sans-serif"
+      },
+      "imports": [
+        "https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&family=Inter:wght@300;400;500;600&family=Barlow+Condensed:wght@600;800&display=swap"
+      ],
+      "rules": {
+        "headings": "Uppercase, tracking-tight, heavy weights (700/800). Use for Section Titles and Player Names.",
+        "body": "High legibility, relaxed line-height. Use for news and bios.",
+        "numbers": "Use 'Barlow Condensed' for jersey numbers and scores."
+      }
+    },
+    "colors": {
+      "palette": {
+        "primary": {
+          "name": "Midnight Pitch",
+          "hex": "#020617",
+          "tailwind": "bg-slate-950",
+          "usage": "Main Background"
+        },
+        "brand_blue": {
+          "name": "Electric Royal",
+          "hex": "#1d4ed8",
+          "tailwind": "bg-blue-700",
+          "usage": "Primary Buttons, Active States, Accents"
+        },
+        "brand_yellow": {
+          "name": "Cyber Gold",
+          "hex": "#facc15",
+          "tailwind": "bg-yellow-400",
+          "usage": "CTAs, Highlights, Jersey Numbers"
+        },
+        "surface": {
+          "name": "Jersey Texture",
+          "hex": "#0f172a",
+          "tailwind": "bg-slate-900",
+          "usage": "Cards, Sections"
+        },
+        "text": {
+          "primary": "#f8fafc",
+          "secondary": "#94a3b8",
+          "accent": "#facc15"
+        }
+      },
+      "gradients": {
+        "hero_overlay": "linear-gradient(to bottom, rgba(2,6,23,0) 0%, rgba(2,6,23,1) 100%)",
+        "card_glow": "radial-gradient(circle at top right, rgba(29, 78, 216, 0.15), transparent 40%)"
+      }
+    },
+    "spacing": {
+      "scale": "Aggressive",
+      "section_padding": "py-24 md:py-32",
+      "grid_gap": "gap-6 md:gap-8",
+      "container_padding": "px-6 md:px-12"
+    },
+    "visual_enhancers": {
+      "texture": "Add a subtle noise texture (opacity 0.03) over the #020617 background to prevent 'digital flatness'.",
+      "borders": "1px solid rgba(255,255,255,0.08) for cards. No heavy shadows.",
+      "glass": "backdrop-blur-md bg-slate-950/80 border-b border-white/10 for the Sticky Header."
+    }
+  },
+  "components": {
+    "header": {
+      "style": "Sticky, Glassmorphism",
+      "elements": [
+        "Logo (Left)",
+        "Nav Links (Center - Uppercase Oswald)",
+        "CTA 'Mitglied werden' (Right - Yellow Pill Button)"
+      ]
+    },
+    "hero": {
+      "type": "Immersive",
+      "layout": "Full-screen background image with heavy bottom gradient fade.",
+      "content": "Big bold text 'SG SIEMENS MÜNCHEN OST'. Subtext 'Tradition trifft Zukunft'. CTA Group.",
+      "image_url": "https://images.unsplash.com/photo-1768492263433-b81fdcdce0e9?crop=entropy&cs=srgb&fm=jpg&q=85"
+    },
+    "squad_grid": {
+      "type": "Bento Grid",
+      "instruction": "Do NOT use equal sized cards. Create a masonry-like feel.",
+      "card_style": "Image top (grayscale on idle, color on hover), Name bottom (Oswald), Number absolute top-right (Yellow).",
+      "layout_rules": "Captain card spans 2 cols. Goalkeeper card is tall (row-span-2)."
+    },
+    "news_feed": {
+      "type": "Hybrid",
+      "layout": "Left: Featured Article (Large). Right: Vertical list of recent updates + Instagram feed integration.",
+      "instagram_style": "Grid of square images with hover overlay showing likes/comments."
+    },
+    "footer": {
+      "style": "Mega Footer",
+      "content": "Club Address, Quick Links, Sponsors Grid (grayscale logos), Social Icons.",
+      "background": "bg-slate-950 border-t border-white/10"
+    }
+  },
+  "assets": {
+    "images": {
+      "hero_bg": "https://images.unsplash.com/photo-1768492263433-b81fdcdce0e9?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "team_bg": "https://images.unsplash.com/photo-1695054486203-fea2173902ee?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "coach_placeholder": "https://images.unsplash.com/photo-1637559508411-e6d65573efff?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "action_highlight": "https://images.unsplash.com/photo-1583505996159-307082cf2085?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "logos": [
+        "https://customer-assets.emergentagent.com/job_7c590580-50fa-4ebf-a519-299d708e8357/artifacts/9p5cz266_image.png",
+        "https://customer-assets.emergentagent.com/job_7c590580-50fa-4ebf-a519-299d708e8357/artifacts/e8lh7ycf_image.png",
+        "https://customer-assets.emergentagent.com/job_7c590580-50fa-4ebf-a519-299d708e8357/artifacts/2832tj7i_Herunterladen.png"
+      ]
+    },
+    "icons": "Use 'lucide-react' for UI icons (Menu, Chevron, User, Calendar)."
+  },
+  "instructions_to_main_agent": {
+    "setup": [
+      "Install 'lucide-react' and 'framer-motion'.",
+      "Update 'tailwind.config.js' to include the custom colors (Midnight Pitch, Electric Royal, Cyber Gold).",
+      "Add the Google Fonts import to 'index.css'."
+    ],
+    "implementation_order": [
+      "1. Setup Global Styles (Fonts, Colors, Texture).",
+      "2. Build the 'Layout' component (Header + Footer).",
+      "3. Build the 'Hero' section.",
+      "4. Build the 'SquadGrid' component (Complex Bento).",
+      "5. Assemble the Homepage.",
+      "6. Create the 'Team' pages reusing SquadGrid."
+    ],
+    "anti_patterns": [
+      "NO generic Bootstrap columns.",
+      "NO pure black (#000000) backgrounds - use Slate-950.",
+      "NO Inter font for Headings - use Oswald."
+    ]
+  },
+  "UNIVERSAL_GUIDELINES_FOR_MAIN_AGENT": {
+    "general": [
+      "Dark colors look good when used independently without gradients. DO NOT use dark colors as gradients.",
+      "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+      "Create depth through layered design elements with z-index hierarchy.",
+      "Use glass-morphism effects with backdrop filters (12-24px blur).",
+      "You MUST NOT apply universal transition. Eg: 'transition: all'. This results in breaking transforms.",
+      "You MUST NOT center align the app container.",
+      "Always use modern button styles like pill-shaped, or sharp button with interaction animations.",
+      "NEVER use AI assistant Emoji characters for icons.",
+      "Every interaction needs micro-animations - hover states, transitions, parallax effects.",
+      "Use 2-3x more spacing than feels comfortable.",
+      "Subtle grain textures, noise overlays, custom cursors, selection states, and loading animations: separates good from extraordinary.",
+      "Main agent relies on these image URLs. Missing categories = main agent will use placeholder text which is FORBIDDEN."
+    ],
+    "component_reuse": [
+      "Prioritize using pre-existing components from src/components/ui when applicable.",
+      "Create new components that match the style and conventions of existing components when needed."
+    ],
+    "export_conventions": [
+      "Components MUST use named exports (export const ComponentName = ...).",
+      "Pages MUST use default exports (export default function PageName() {...})."
+    ],
+    "toasts": [
+      "Use 'sonner' for toasts.",
+      "Sonner component are located in '/app/frontend/src/components/ui/sonner.jsx'."
+    ]
+  }
+}

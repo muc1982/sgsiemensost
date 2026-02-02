@@ -1,6 +1,6 @@
-import { useState } from "react";
-import { Outlet, Link, useLocation } from "react-router-dom";
-import { Menu, X, Instagram, ChevronDown } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Outlet, Link, useLocation, useNavigate } from "react-router-dom";
+import { Menu, X, Instagram, ChevronDown, ArrowLeft, ChevronUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -12,7 +12,62 @@ import {
 // Logo aus public/assets Ordner
 const CLUB_LOGO = "/assets/logo.png";
 
+// Zurück Button Komponente
+export const BackButton = ({ className = "" }) => {
+  const navigate = useNavigate();
+  
+  return (
+    <button
+      onClick={() => navigate(-1)}
+      className={`inline-flex items-center gap-2 bg-electric-royal hover:bg-blue-600 text-white font-heading uppercase tracking-wider px-4 sm:px-6 py-2.5 sm:py-3 rounded-lg transition-all duration-200 touch-manipulation ${className}`}
+      data-testid="back-button"
+    >
+      <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+      <span className="text-sm sm:text-base">Zurück</span>
+    </button>
+  );
+};
+
+// Scroll to Top Button Komponente
+const ScrollToTopButton = () => {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.scrollY > 300) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  return (
+    <button
+      onClick={scrollToTop}
+      className={`fixed bottom-6 right-6 z-50 bg-electric-royal hover:bg-blue-600 text-white p-3 sm:p-4 rounded-full shadow-lg transition-all duration-300 touch-manipulation ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"
+      }`}
+      data-testid="scroll-to-top-button"
+      aria-label="Nach oben scrollen"
+    >
+      <ChevronUp className="w-5 h-5 sm:w-6 sm:h-6" />
+    </button>
+  );
+};
+
 const navLinks = [
+  { name: "Über Uns", path: "/ueber-uns" },
   { name: "Verein", path: "/verein" },
   { 
     name: "Mannschaften", 
@@ -229,9 +284,23 @@ export const Footer = () => {
           <p className="text-slate-500 text-xs sm:text-sm text-center sm:text-left">
             © {new Date().getFullYear()} SG Siemens München Ost e.V. Alle Rechte vorbehalten.
           </p>
-          <div className="flex gap-4 sm:gap-6">
-            <Link to="/impressum" className="text-slate-500 hover:text-white text-xs sm:text-sm">Impressum</Link>
-            <Link to="/datenschutz" className="text-slate-500 hover:text-white text-xs sm:text-sm">Datenschutz</Link>
+          <div className="flex gap-6 sm:gap-8">
+            <Link 
+              to="/impressum" 
+              className="text-slate-500 hover:text-white text-xs sm:text-sm py-3 px-3 -my-3 -mx-3 touch-manipulation inline-block min-w-[80px] text-center" 
+              data-testid="footer-impressum-link"
+              style={{ WebkitTapHighlightColor: 'transparent', touchAction: 'manipulation' }}
+            >
+              Impressum
+            </Link>
+            <Link 
+              to="/datenschutz" 
+              className="text-slate-500 hover:text-white text-xs sm:text-sm py-3 px-3 -my-3 -mx-3 touch-manipulation inline-block min-w-[80px] text-center" 
+              data-testid="footer-datenschutz-link"
+              style={{ WebkitTapHighlightColor: 'transparent', touchAction: 'manipulation' }}
+            >
+              Datenschutz
+            </Link>
           </div>
         </div>
       </div>
@@ -247,6 +316,7 @@ const Layout = () => {
         <Outlet />
       </main>
       <Footer />
+      <ScrollToTopButton />
     </div>
   );
 };

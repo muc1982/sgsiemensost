@@ -189,17 +189,23 @@ export const getGalleries = async () => {
     const response = await client.getEntries({
       content_type: 'gallery',
       order: ['-fields.date'],
+      include: 2, // Verknüpfte Assets mit laden
     });
 
     const galleries = await Promise.all(
       response.items.map(async (item) => {
+        // Debug: Log Feldnamen
+        console.log('Galerie Felder:', Object.keys(item.fields));
+        
         // Erstes Bild als Cover verwenden
         let coverImage = null;
         let imageCount = 0;
 
-        if (item.fields.images && item.fields.images.length > 0) {
-          imageCount = item.fields.images.length;
-          coverImage = await resolveAssetUrl(item.fields.images[0]);
+        // Contentful Feld heißt "image" oder "images"
+        const imageField = item.fields.image || item.fields.images;
+        if (imageField && imageField.length > 0) {
+          imageCount = imageField.length;
+          coverImage = await resolveAssetUrl(imageField[0]);
         }
 
         return {
@@ -229,6 +235,7 @@ export const getGalleryBySlug = async (slug) => {
       content_type: 'gallery',
       'fields.slug': slug,
       limit: 1,
+      include: 2, // Verknüpfte Assets mit laden
     });
 
     if (response.items.length === 0) {
@@ -236,11 +243,16 @@ export const getGalleryBySlug = async (slug) => {
     }
 
     const item = response.items[0];
+    
+    // Debug: Log alle Feldnamen
+    console.log('Contentful Galerie Felder:', Object.keys(item.fields));
+    console.log('Contentful Galerie Daten:', item.fields);
 
-    // Alle Bilder laden
+    // Alle Bilder laden - Contentful Feld heißt "image" oder "images"
     const images = [];
-    if (item.fields.images && item.fields.images.length > 0) {
-      for (const imageRef of item.fields.images) {
+    const imageField = item.fields.image || item.fields.images;
+    if (imageField && imageField.length > 0) {
+      for (const imageRef of imageField) {
         const imageUrl = await resolveAssetUrl(imageRef);
         if (imageUrl) {
           images.push(imageUrl);
@@ -260,6 +272,36 @@ export const getGalleryBySlug = async (slug) => {
   } catch (error) {
     console.error('Fehler beim Laden der Galerie:', error);
     return null;
+  }
+};
+
+// Über Uns Seite abrufen
+export const getAboutUs = async (staticData = null) => {
+  try {
+    const response = await client.getEntries({
+      content_type: 'aboutUs',
+      limit: 1,
+    });
+
+    if (response.items.length > 0) {
+      const item = response.items[0];
+      const heroImage = await resolveAssetUrl(item.fields.heroImage);
+
+      return {
+        id: item.sys.id,
+        title: item.fields.title || 'Über Uns',
+        subtitle: item.fields.subtitle || '',
+        heroImage: heroImage,
+        content: item.fields.content || null,
+        foundingYear: item.fields.foundingYear || 1954,
+        lastUpdated: item.fields.lastUpdated || null,
+      };
+    }
+
+    return staticData;
+  } catch (error) {
+    console.error('Fehler beim Laden der Über Uns Seite:', error);
+    return staticData;
   }
 };
 
